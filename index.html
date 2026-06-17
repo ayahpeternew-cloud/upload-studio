@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<title>Upload Studio</title>
+<meta name="theme-color" content="#0B1622">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Upload">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="manifest" href='data:application/manifest+json,{"name":"Upload Studio","short_name":"Upload","display":"standalone","background_color":"%230B1622","theme_color":"%230B1622","start_url":"./","icons":[{"src":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAU4klEQVR4nO3cO3Ik1xEF0MIEPfoMmQpa8rUNbUgr0Ia0DfqyJmQqxh+bMobg9ADd6Pq8T+bLcyx6bBTq5b2V1YOXjZB+/uXX32d/BoAWvn75/DL7M/CeX8okAh7gGwVhDhd9AGEPcIxS0J8L3IHAB2hLIWjPBW1A4AOMpRBc5wKeJPQBYlAGznHRDhD6ALEpA/u5UE8IfYCclIGPuTgPCH6ANSgC97koN4Q+wNqUge9ciE3wA1SjCBQvAIIfoLbKRaDkDy74AbhVsQiU+oEFPwAfqVQESvyggh+AIyoUgU+zP0Bvwh+Aoypkx7INp8IvD4D+Vt0GLPdDCX4AelitCCz1CkD4A9DLahmzRJtZ7ZcCQGwrbAPSbwCEPwCjrZA9qQvACr8AAHLKnkEpVxjZLzoAa8n4SiDdBkD4AxBNxmxKVQAyXmAAasiWUSlWFtkuKgC1ZXglEH4DIPwByCZDdoUuABkuIADcEz3DwhaA6BcOAJ6JnGUhC0DkCwYAR0TNtHAFIOqFAoCzImZbqAIQ8QIBQAvRMi5MAYh2YQCgtUhZF6IARLogANBTlMybXgCiXAgAGCVC9k0tABEuAADMMDsDpxWA2T84AMw2MwunFADhDwDfzMrE4QVA+APAj2Zk49ACIPwB4L7RGTmsAAh/APjYyKwcUgCEPwDsMyozp/8dAABgvO4FwNM/ABwzIju7FgDhDwDn9M7QbgVA+APANT2z1HcAAKCgLgXA0z8AtNErU5sXAOEPAG31yNamBUD4A0AfrTPWdwAAoKBmBcDTPwD01TJrmxQA4Q8AY7TKXK8AAKCgywXA0z8AjNUie20AAKCgSwXA0z8AzHE1g08XAOEPAHNdyWKvAACgoFMFwNM/AMRwNpNtAACgoMMFwNM/AMRyJpttAACgoEMFwNM/AMR0NKNtAACgoN0FwNM/AMR2JKttAACgoF0FwNM/AOSwN7NtAACgIAUAAAp6WgCs/wEglz3ZbQMAAAV9WAA8/QNATs8y3AYAAApSAACgoIcFwPofAHL7KMttAACgIAUAAAq6WwCs/wFgDY8y3QYAAApSAACgoHcFwPofANZyL9ttAACgIAUAAApSAACgoB8KgPf/ALCmtxlvAwAABSkAAFCQAgAABf1ZALz/B4C13Wa9DQAAFKQAAEBBP83+AEA7f//nv7v/P3771z+6/z+A/l5e/8N3ACCuEcHemqIAMX398vll2/4oAMIfYsgY9EcpBjDf1y+fXxQAmKRC2O+lFMBYCgAMIuyPUwqgHwUAOhH47SkE0I4CAA0J/XGUAbhGAYALBH4cCgEcowDAQUI/PmUAnlMAYAehn5cyAPd9/fL55UX4w32Cfx2KALynAMANob8+ZQC+UQBgE/wVKQJUpwBQltDnlTJARQoA5Qh+HlEEqEQBoAzBz16KABUoACxP8HOWIsDKFACWJfhpRRFgRQoAyxH89KIIsBIFgGUIfkZRBFiBAkB6gp9ZFAEyUwBIS/AThSJARp9mfwA4Q/gTifuRjGwASMWgJTrbALJQAEhB8JONIkB0XgEQnvAnI/ct0dkAEJYByipsA4jIBoCQhD8rcT8TkQ0AoRiUrM42gChsAAhD+FOB+5wobACYzkBsq+cTpt9VW7YBzKQAMJVAOSZDYPidHpPhd8qaFACmERQfWykY/K4/ttLvmjwUAIYTBu9VDAD3wXsV7wPmUQAYytD/xqB/z73xjXuDURQAhqk84A3149wv0JcCQHdVB7kh3o57CNpTAOiq2uA2sPtzT0EbCgDdVBnUBvQ87jE4TwGgiwqD2VCOw/0GxykANLfyMDaE43P/wT4KAM0YvETifoSPKQA0seqwNWjzc2/CfQoAl604YA3X9bhP4UcKAJesNlQN1PW5Z+EbBYDTVhqkhmg97l+qUwA4ZZXhaXDiXqYqBYDDVhiYhiVvua+pRgHgkOxD0oDkGfc4VXya/QHIw2Ckguz3SfZzyjg2AOySeahkH+jM475nZQoAT2UdggYgrTgDrMgrAD5k8EHe+ynr+WUMGwAeyjg8sg5q8nAuWIUNAHcZcnBfxvss43mmPwWAdzIOi4xDmbwy3m8ZzzV9/TT7A8AVGQcxa3i99wQrWdkA8INMw0z4E0Gm+zDT+aY/BYA/ZRoOmYYu68t0P2Y65/TlXwGwbVueoZBp0FKTs0QWNgAYWNBQlvs0y7mnHwWguCxDIMtQhW3Lc79mOf/0oQAQXpZhCrfct0TnOwCFRW//BiircNaIyAagKAMJxol+P0efB/ShABQU/bBHH5ZwRvT7OvpcoD0FgFCiD0m4wv1NJApAMZFbvuFIBZHv88jzgfYUgEIiH+7IQxFai3y/R54TtKUAFBH5UEcehtBL5Ps+8rygHQWAqSIPQejN/c9MCkABUdu84Qdxz0HUuUE7CsDioh7iqEMPZoh6HqLOD9pQABgu6rCDmZwLRlMAFhaxvRty8FjE8xFxjtCGArCoiIc24nCDaCKek4jzhOsUAAAoSAFYUMS2HvGpBqKKeF4izhWuUQAWE/GQRhxmEF3EcxNxvnCeAkBXEYcYZOH80JMCsJBo7dzwguuinaNoc4bzFAAAKEgBWES0Vh7tqQUyi3aeos0bzlEAFhDtMEYbVrCCaOcq2tzhOAWApqINKViJ80VLCkByWjgwi/mTmwJAM55OoD/njFYUgMQitW9DCcaJdN4izSGOUQC4LNIwgiqcO65SAJLSuoEozKOcFAAu8RQC8zh/XKEAJBSlbRs+MF+UcxhlLrGfAgB3/O+//5n9EQC6UgCSidKyozx19PS///5HESCFKOcxynxiHwUAnlACgBUpAIlEaddRnjZGsg0guijnMsqc4jkFgEOiDJlZFAEiq34+OUYBSEKrjkUJgMfMqxwUAHbzdPEj2wAick7ZSwFIQJuOTRGA98yt+BQAdvFU8ZwiQBTOK3soANCYEgBkoAAEF2GN5mniONsAZotwbiPMLx5TAKAjRQCISgEILEJ7jvAUsQIlgBkinN8Ic4z7FAAYxDYAiEQB4KEITw8rUgQYyTnmEQUgKGuz9SkBVGGexaQAcJenhjFsAxjBeeYeBSAgbbkeRYDVmWvxKAC842lhHkWAXpxr3lIAICAlAOhNAQhm9prMU0IctgG0Nvt8z55v/EgBgOAUAaAHBQCSUAKAlhSAQGavx2avB3nONoCrZp/z2XOO7xQASEgRAK5SANi2bf5TAecoAZzhvLNtCgCkZxsAnKEABOG9GFcpAmRh3sWgAGAduBglgD2cexQAWJBtAPCMAhCAdRi9KAJEZe7NpwAUZw1YgyLAPc5/bQoAFKIEAK8UACjGNgDYNgVgupnvwaz/alME2La5c8D3AOZSAKA4JQBqUgAA2wAoSAEA/qQIQB0KQFHe//MRJaAW86AmBWAiX4AhMtsARjAH51EAgA8pArAmBQDYRQmAtSgABXnfx1m2AesyF+pRAIDDFAHITwGYxBdfWIEiQAvm4RwKAHCZEgD5KABAE7YBkIsCUIwv+tCbIpCX+VCLAgB0oQRAbAoA0I1tAMSlAEzgG69UowjwjLk4ngIADKMEQBwKQCG+4EMEtgGxmRN1KADAFIoAzKUAAFMpAjCHAgCEoATAWAoAEIZtAIyjAADhKALQnwIAhKUEQD8KABCabQD0oQAM5q9dwTmKwPrMx7EUgCL8cQ9WoQT0Z17UoAAA6dgGwHUKAJCWIgDnKQBAekoAHKcAAEuwDYBjFABgKYoA7KMAAEtSBOBjCgCwNCUA7lMAgOXZBsB7CgBQhiIA3ykAQDlKACgAQFG2AVSnAAClKQJUpQAAbF4LUI8CAPAH2wAqUQAA3lAEqEABAHhAEWBlCgDAE0oAK1IAAHawDWA1CgDAAYoAq1AAAE5QAshOAQA4yTaAzH6a/QEAsvrLX/82+yPAaTYARfz9n/+e/RFgKSuHv3lRgwIw2G//+sfsjwBc8Je//m3p8J/JfBzLKwCAHYQ+q7EBAHhC+LMiGwCABwQ/K1MAAN4Q/FSgAAD8QfBTie8AAGzCn3psAIDSBD9V2QAU4o97wHf+Pf995kQdCgBQjuAHBWAKf+0K5vDUH5e5OJ7vAADLE/rwng0AsDThD/cpAMX4gg9VWPcfZz7U4hUAsBShD/soAMASBD8c4xXAJL7xCu0I/9zMwzlsAIC0BD+cZwNQkC/6kJ0v+LVnLtSjAACpCH5owysAIAXBD23ZAEzkiy/wnHX/2szBeRSAorzvIwPBP4Z5UJNXAEA4gh/6UwCAMAQ/jOMVABCC8IexFIDJZn4Bxns/IvAlv7lmzgFfAJzLKwBgCqEPcykAwFCCH2LwCqA4rwEYSfjH4vzXpgAE4D0Yq/Oen7fMvfm8AgC6EfoQlw0A1oB0Ifxjc+5RAIKwDmMV1v08Y97F4BUA0ITQh1xsANi2zTqQa4R/Ls4722YDAFwg+CEvG4BAZr8X81TAXt7z5zX7nM+ec3xnAwDsJvRhHTYAwC7CH9aiAAQzez02ez1IPNb965h9vmfPN37kFQBwl9CHtdkA8M7spwTmE/7rca55SwEIyJqMWaz76cVci0cB4C5PC7UI/rU5z9yjAASlLTOK4Kc38ywmBYCHPDWszVN/Dc4xj/hXAFCM0Ae2zQYgtAhrM08PaxH+tUQ4vxHmGPfZAEABgh94ywYguAjtOcJTBOd4z19XhHMbYX7xmA0ALEjoA8/YALBLhKcJ9hH+OK/soQAkYI3GHtb9RGJuxacAsJunipgEP7ecU/ZSAJLQprlH8BOReZWDAsAhni5i8NTPPc4nRygAiURp1YbMPIKfR6KcyyhziucUAEhC8AMtKQDJRGnXUZ42KvDUzzNRzmOU+cQ+/hAQBCX0gZ5sABKK0rKjPHWsSPizV5RzGGUusZ8CwCVRhs8qrPs5wvnjCgUgKW17LYKfzMyjnBQALvMUcp7g5yznjqsUgMQitW7D6DjBz1mRzlukOcQxCgDNRBpKkXnq5wrnjFYUgOS07zwEP6sxf3JTAGjK08l9gp8WnC9aUgAWEK2FG1LfeeqnlWjnKtrc4TgFYBHRDmO0YTWa4KelaOcp2rzhHAUAGhP8QAYKwEKitfJoTy29eeqnh2jnKNqc4TwFgK6iDa8eBD+9VDg/zKMALCZiO191iAl+eop4biLOF85TABYU8ZBGHGZXCH56inheIs4Vrvlp9geATAQ/sAobgEVFbOsRn2r2su5nlIjnJOI84ToFYGERD23E4faM4GeUiOcj4hyhDQWA4SIOuXs89TNSlnPBOl5+/uXX32d/CPqKOlg8WcA3zigz2AAUEPUQRx16MFLUcxB1btCOAsBUUYcfjOD+ZyYFoAhtHtjLvKhBASgk4qGO+JlglIj3f8TPRB8KQDGRDnekzwKzRDoHkT4L/SkATGHQwHfOAzMoAAXNHjaz//8Q0exzMfv/z3gKQFGzDrshA485l4ykABQ2+tAbMvCcc8koCgBDGDKwn/PCCApAcSMGjWEGxzmb9KYA0HUIGDBwnrNJTwoA27b1GQYGDFznbNKLAsCfWg4FAwbacTbpQQHgBy2GgwED7TmbtKYA0JQBA/04X7SkAPDO2SFjOEF/zietKADcdXRYGC4wjvNJCwoAD+0dGoYLjOd8cpUCwIeeDQ/DBeZxPrlCAeCpR0PEcIH5nE/OUgDY5e0wMVwgDueTMxQAdnsdKoYLxON8ctTLz7/8+vvsDwEAjGUDAAAFKQAAUJACAAAFKQAAUJACAAAFKQAAUJACAAAFKQAAUJACAAAFKQAAUJACAAAFKQAAUJACAAAFKQAAUJACAAAFKQAAUJACAAAFKQAAUJACAAAFKQAAUJACAAAFKQAAUJACAAAFKQAAUJACAAAFKQAAUJACAAAFKQAAUJACAAAFKQAAUJACAAAFKQAAUJACAAAFKQAAUJACAAAFKQAAUNCnr18+v8z+EADAOF+/fH6xAQCAghQAAChIAQCAghQAAChIAQCAghQAAChIAQCAgj5t27d/Dzj7gwAA/b1mvg0AABSkAABAQQoAABSkAABAQX8WAF8EBIC13Wa9DQAAFKQAAEBBCgAAFPRDAfA9AABY09uMtwEAgIIUAAAoSAEAgILeFQDfAwCAtdzLdhsAAChIAQCAgu4WAK8BAGANjzLdBgAAClIAAKCghwXAawAAyO2jLLcBAICCFAAAKOjDAuA1AADk9CzDbQAAoKCnBcAWAABy2ZPdNgAAUJACAAAF7SoAXgMAQA57M9sGAAAK2l0AbAEAILYjWW0DAAAFHSoAtgAAENPRjLYBAICCDhcAWwAAiOVMNtsAAEBBpwqALQAAxHA2k20AAKCg0wXAFgAA5rqSxZc2AEoAAMxxNYO9AgCAgi4XAFsAABirRfbaAABAQU0KgC0AAIzRKnObbQCUAADoq2XWegUAAAU1LQC2AADQR+uMbb4BUAIAoK0e2drlFYASAABt9MpU3wEAgIK6FQBbAAC4pmeWdt0AKAEAcE7vDO3+CkAJAIBjRmSn7wAAQEFDCoAtAADsMyozh20AlAAA+NjIrBz6CkAJAID7Rmfk8O8AKAEA8KMZ2TjlS4BKAAB8MysTp/0rACUAgOpmZuHUfwaoBABQ1ewMnP53AGZfAAAYLUL2TS8A2xbjQgDACFEyL0QB2LY4FwQAeomUdWEKwLbFujAA0FK0jAtVALYt3gUCgKsiZlu4ArBtMS8UAJwRNdNCFoBti3vBAGCvyFkWtgBsW+wLBwAfiZ5hoQvAtsW/gADwVobsCv8Bb/38y6+/z/4MAPBIhuB/FX4DcCvThQWglmwZlaoAbFu+CwzA+jJmU7oPfMsrAQBmyhj8r9JtAG5lvvAA5JY9g1IXgG3L/wsAIJ8Vsif9D3DLKwEAeloh+F+l3wDcWukXA0Asq2XMUj/MLdsAAFpYLfhfLflD3VIEADhj1eB/tdQrgHtW/wUC0F6F7Fj+B7xlGwDARyoE/6syP+gtRQCAW5WC/1W5H/iWIgBQW8Xgf1X2B7+lCADUUjn4X5W/ALcUAYC1Cf7vXIgHlAGANQj9+1yUJxQBgJwE/8dcnAOUAYDYhP5+LtRJygBADEL/HBetAWUAYCyhf50L2IFCANCWwG/PBR1AIQA4RuD35wJPohQAfCPs53DRg1IQgFUI+Jj+D5nAYfIxo4+MAAAAAElFTkSuQmCC","sizes":"512x512","type":"image/png"}]}'>
+<style>
+  :root{ --bg:#0B1622; --card:#111E2D; --chip:#16263A; --chipDone:#0F1B28;
+    --line:rgba(255,255,255,.10); --tick:rgba(255,255,255,.16); --tickDim:rgba(255,255,255,.07);
+    --text:#F2F6FA; --muted:#6E8093; --blue:#3E8FD6; --blueLite:#6FB3E8;
+    --flame:#FF5A3C; --flameDim:#41515F; --red:#E0556B; --redDim:#3A2330; }
+  *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent }
+  html,body{ margin:0; background:var(--bg); color:var(--text); font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+  body{ padding-bottom:34px; padding-top:env(safe-area-inset-top); }
+  #root{ max-width:440px; margin:0 auto; padding:0 18px }
+  .row{ display:flex; align-items:center }
+  .scroll{ display:flex; gap:10px; overflow-x:auto; padding:10px 0 2px; scrollbar-width:none }
+  .scroll::-webkit-scrollbar{ height:0 }
+  button{ font-family:inherit }
+  button:focus-visible,input:focus-visible{ outline:2px solid var(--blueLite); outline-offset:2px }
+  .stat-l{ color:var(--muted); font-size:15px; margin-bottom:6px }
+  .stat-v{ color:var(--blueLite); font-size:30px; font-weight:800; letter-spacing:-.5px }
+  .sec{ margin-top:18px; font-size:13px; color:var(--muted); font-weight:600 }
+  .chip{ flex:0 0 auto; text-align:left; padding:10px 14px; border-radius:14px; min-width:132px;
+    border:1px solid var(--line); background:var(--chip); color:var(--text); cursor:pointer }
+  .chip:disabled{ opacity:.55; cursor:default; border-color:transparent; background:var(--chipDone) }
+  .chip .e{ font-size:18px } .chip .l{ font-size:13px; font-weight:600; margin-top:4px }
+  .chip .v{ color:var(--muted); font-size:12px; margin-top:2px }
+  .pen{ border:1px solid var(--redDim); background:var(--redDim); min-width:124px }
+  .pen .v{ color:var(--red); font-weight:700 }
+  .add{ border:1px dashed var(--line); background:transparent; color:var(--muted);
+    min-width:92px; font-size:13px; font-weight:600; padding:10px 14px; border-radius:14px; cursor:pointer }
+  .cta{ width:100%; margin-top:6px; padding:15px 0; border-radius:16px; border:none; cursor:pointer;
+    font-size:16px; font-weight:700; color:#fff; background:linear-gradient(90deg,var(--flame),#FF7A52); box-shadow:0 6px 20px rgba(255,90,60,.28) }
+  .ghost{ width:100%; margin-top:6px; padding:13px 0; border-radius:14px; cursor:pointer;
+    font-size:15px; font-weight:600; color:var(--blueLite); background:transparent; border:1px solid var(--line) }
+  .panel{ margin-top:14px; background:var(--card); border:1px solid var(--line); border-radius:16px; padding:14px }
+  .inp{ flex:1; padding:11px 12px; border-radius:12px; border:1px solid var(--line); background:var(--card); color:var(--text); font-size:14px }
+  .link{ background:none; border:none; color:var(--blueLite); font-size:13px; font-weight:600; cursor:pointer; padding:0 }
+  .link:disabled{ color:var(--muted); opacity:.5; cursor:default }
+  .log{ margin-top:8px; background:var(--card); border-radius:14px; overflow:hidden; border:1px solid var(--line) }
+  .logrow{ display:flex; align-items:center; gap:10px; padding:11px 14px; border-top:1px solid var(--line) }
+  .logrow:first-child{ border-top:none }
+  .x{ background:none; border:none; color:var(--muted); font-size:18px; line-height:1; cursor:pointer; padding:2px 4px }
+  @media (prefers-reduced-motion:reduce){ *{ animation:none!important } }
+  @keyframes ring{ 0%{transform:scale(.4);opacity:.9} 100%{transform:scale(2.6);opacity:0} }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<input id="proofInput" type="file" accept="image/*" capture="user" style="display:none">
+<input id="importInput" type="file" accept="application/json,.json" style="display:none">
+<script>
+/* Single-file Upload Studio. All data lives in this phone's localStorage. */
+const CACHE="yt-upload-tracker:v3";
+const PROOF_KEEP_DAYS=30;   // older proof photos are trimmed to save space (scores stay forever)
+
+const PRESETS=[
+ {id:"wake",e:"\u2600\ufe0f",l:"Wake up & plan",v:5},
+ {id:"script",e:"\u270d\ufe0f",l:"Script / outline",v:10},
+ {id:"record",e:"\ud83c\udfac",l:"Set up & record",v:25},
+ {id:"edit",e:"\u2702\ufe0f",l:"Edit",v:25},
+ {id:"thumb",e:"\ud83d\uddbc\ufe0f",l:"Thumbnail",v:10},
+ {id:"meta",e:"\ud83d\udd24",l:"Title, desc & tags",v:8},
+ {id:"export",e:"\ud83d\udce4",l:"Export & review",v:7}];
+const PENS=[
+ {id:"social",e:"\ud83d\udcf1",l:"Social media",v:-10},
+ {id:"game",e:"\ud83c\udfae",l:"Played a game",v:-10},
+ {id:"distract",e:"\ud83d\udeab",l:"Other distraction",v:-10}];
+
+let state={history:{},proofs:{}};
+let customOpen=false, burst=false, selectedDay=null, weekOffset=0;
+
+/* dates */
+const dkey=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const parseDay=k=>{const p=k.split("-");return new Date(+p[0],+p[1]-1,+p[2]);};
+const addDays=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x;};
+const fmtDate=d=>d.getDate()+" "+d.toLocaleString("en",{month:"short"})+" "+d.getFullYear();
+const shortDM=d=>d.getDate()+" "+d.toLocaleString("en",{month:"short"});
+const wd=d=>d.toLocaleString("en",{weekday:"short"}).toUpperCase();
+const stamp=ts=>new Date(ts).toLocaleString("en",{month:"short",day:"numeric",hour:"numeric",minute:"2-digit"});
+
+/* storage */
+function pruneProofs(days){ const cut=dkey(addDays(new Date(),-days));
+  for(const k in state.proofs){ if(k<cut) delete state.proofs[k]; } }
+function load(){ var ok=false;
+  try{ var c=localStorage.getItem(CACHE); if(c){ state=JSON.parse(c); ok=true; } }catch(e){}
+  if(!ok){ try{ var b=localStorage.getItem(CACHE+":bak"); if(b){ var bb=JSON.parse(b); if(bb&&bb.history) state=bb; } }catch(e){} }
+  if(!state.history)state.history={}; if(!state.proofs)state.proofs={}; if(!state.meta)state.meta={};
+  pruneProofs(PROOF_KEEP_DAYS);
+  if(navigator.storage&&navigator.storage.persist){ try{ navigator.storage.persist(); }catch(e){} } }
+function save(){ try{ localStorage.setItem(CACHE,JSON.stringify(state)); }
+  catch(e){ pruneProofs(7); try{ localStorage.setItem(CACHE,JSON.stringify(state)); }
+    catch(e2){ alert("Phone storage is full \u2014 export a backup, then use Reset day on old days to free space."); return; } }
+  try{ localStorage.setItem(CACHE+":bak",JSON.stringify({history:state.history,meta:state.meta})); }catch(e){} }
+function exportBackup(){ state.meta=state.meta||{}; state.meta.lastExport=Date.now(); save();
+  var payload={app:"upload-studio",version:3,exportedAt:new Date().toISOString(),state:state};
+  var blob=new Blob([JSON.stringify(payload)],{type:"application/json"});
+  var url=URL.createObjectURL(blob), a=document.createElement("a");
+  a.href=url; a.download="upload-studio-backup-"+dkey(new Date())+".json";
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(function(){ URL.revokeObjectURL(url); },1500); render(); }
+function updateStorageInfo(){ var el=document.getElementById("storageInfo"); if(!el) return;
+  var tip="Export now and then so a cleared browser can\u2019t wipe your streak.";
+  if(navigator.storage&&navigator.storage.estimate){ navigator.storage.estimate().then(function(es){
+    var used=(es.usage/1048576).toFixed(1); el.textContent="Using "+used+" MB on this phone. "+tip; }); }
+  else { el.textContent=tip; } }
+
+/* scoring */
+function score(steps){ steps=steps||[]; let cv=0,cvp=0;
+  for(const s of steps){ if(s.presetId==="upload"){cv++;cvp=0;} else {cvp+=s.v; if(cvp<0)cvp=0;} }
+  return {videos:cv,inProgress:cvp,score:cv*100+cvp,published:cv>=1}; }
+function streakOf(today){ let st=0,c=new Date(today);
+  const pub=d=>score(state.history[dkey(d)]&&state.history[dkey(d)].steps).published;
+  if(!pub(today)) c=addDays(today,-1);
+  while(pub(c)){ st++; c=addDays(c,-1); } return st; }
+
+/* geometry */
+const CX=150,CY=150,S0=-135,SW=270;
+const polar=(r,deg)=>{const a=deg*Math.PI/180;return{x:CX+r*Math.sin(a),y:CY-r*Math.cos(a)};};
+function arc(r,s,e){const a=polar(r,s),b=polar(r,e),lg=e-s>180?1:0;
+  return "M "+a.x.toFixed(2)+" "+a.y.toFixed(2)+" A "+r+" "+r+" 0 "+lg+" 1 "+b.x.toFixed(2)+" "+b.y.toFixed(2);}
+function smooth(p){ if(p.length<2)return""; let d="M "+p[0].x+" "+p[0].y;
+  for(let i=0;i<p.length-1;i++){const a=p[i-1]||p[i],b=p[i],c=p[i+1],e=p[i+2]||c;
+    d+=" C "+(b.x+(c.x-a.x)/6)+" "+(b.y+(c.y-a.y)/6)+" "+(c.x-(e.x-b.x)/6)+" "+(c.y-(e.y-b.y)/6)+" "+c.x+" "+c.y;}
+  return d;}
+const flamePath='M12 2c1 3-2 4-2 7 0 1.5 1 2.5 2 2.5S16 12 15 9c2 1.5 4 4 4 7a7 7 0 11-14 0c0-3.5 2.5-5 4-7.5C10 6 11 4 12 2z';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function readProof(file){ return new Promise((res,rej)=>{ const rd=new FileReader();
+  rd.onload=()=>{ const im=new Image(); im.onload=()=>{ const max=560,sc=Math.min(1,max/Math.max(im.width,im.height));
+      const cv=document.createElement("canvas"); cv.width=Math.round(im.width*sc); cv.height=Math.round(im.height*sc);
+      cv.getContext("2d").drawImage(im,0,0,cv.width,cv.height); res(cv.toDataURL("image/jpeg",.55)); };
+    im.onerror=rej; im.src=rd.result; }; rd.onerror=rej; rd.readAsDataURL(file); }); }
+function entry(k){ if(!state.history[k]) state.history[k]={steps:[]}; return state.history[k]; }
+
+function render(){
+  const today=new Date(), tKey=dkey(today);
+  const dispKey = selectedDay || tKey;
+  const isToday = dispKey===tKey;
+  const en = state.history[dispKey] || {steps:[]};
+  const steps = en.steps||[];
+  const sc=score(steps), streak=streakOf(today);
+  const done=new Set(steps.filter(s=>s.presetId&&s.presetId!=="upload").map(s=>s.presetId));
+  const tss=steps.map(s=>s.ts);
+  const firstTs=tss.length?Math.min.apply(null,tss):null;
+  const refNow=isToday?Date.now():(tss.length?Math.max.apply(null,tss):0);
+  const ms=firstTs?Math.max(0,refNow-firstTs):0, aH=Math.floor(ms/3600000), aM=Math.floor(ms%3600000/60000);
+  const arcVal=sc.published?100:Math.min(sc.score,100), progEnd=S0+SW*arcVal/100;
+  const proof=state.proofs[dispKey];
+
+  let ticks="";
+  for(let i=0;i<46;i++){ const deg=S0+SW*i/45, maj=i%5===0, lit=(i/45)*100<=arcVal&&(sc.published||sc.score>0);
+    const o=polar(127,deg), n=polar(maj?112:118,deg);
+    ticks+='<line x1="'+o.x+'" y1="'+o.y+'" x2="'+n.x+'" y2="'+n.y+'" stroke="'+(lit?'var(--blueLite)':(sc.published||sc.score>0?'var(--tickDim)':'var(--tick)'))+'" stroke-width="'+(maj?2.2:1.4)+'" stroke-linecap="round"/>'; }
+
+  /* trend window: 7 days ending at (today + weekOffset weeks) */
+  const W=340,H=120,pad=18, yFor=p=>Math.max(10,96-Math.min(p,200)/100*40);
+  const anchor=addDays(today,weekOffset*7);
+  const days=[]; for(let i=0;i<7;i++) days.push(addDays(anchor,i-6));
+  const pts=days.map((d,i)=>{const k=dkey(d); const s=score(state.history[k]&&state.history[k].steps).score;
+    return {x:pad+i*(W-pad*2)/6, y:yFor(s), sel:k===dispKey, k:k};});
+  const goalY=yFor(100);
+  let dots="";
+  pts.forEach(p=>{ dots+= p.sel
+      ? '<circle cx="'+p.x+'" cy="'+p.y+'" r="7" fill="var(--bg)" stroke="var(--blueLite)" stroke-width="3"/>'
+      : '<circle cx="'+p.x+'" cy="'+p.y+'" r="4.5" fill="var(--blueLite)"/>';
+    dots+='<text x="'+p.x+'" y="'+(H+16)+'" text-anchor="middle" font-size="11" fill="'+(p.sel?'var(--text)':'var(--muted)')+'" font-weight="'+(p.sel?700:500)+'">'+wd(parseDay(p.k))+'</text>';
+    dots+='<circle cx="'+p.x+'" cy="'+p.y+'" r="20" fill="transparent" data-act="day" data-day="'+p.k+'" style="cursor:pointer"/>'; });
+  const rangeLbl=shortDM(days[0])+" \u2013 "+shortDM(days[6]);
+
+  let statusTop, statusSub;
+  if(sc.published){ statusTop=(sc.videos>1?'Published \u00d7'+sc.videos+'! \ud83c\udf89':'Published! \ud83c\udf89');
+    statusSub=proof?('Verified \u2713 \u00b7 streak '+streak+' day'+(streak===1?'':'s')):(isToday?'Add your proof selfie below \ud83d\udcf8':'No proof photo'); }
+  else if(isToday){ statusTop='Goal: Upload today'; statusSub=sc.score+'% complete'; }
+  else { statusTop='No upload this day'; statusSub='Final: '+sc.score+'%'; }
+
+  let controls="";
+  if(isToday){
+    const presetChips=PRESETS.map(p=>{const d=done.has(p.id);
+      return '<button class="chip" '+(d?'disabled':'')+' data-act="preset" data-id="'+p.id+'"><div class="e">'+p.e+(d?' <span style="color:var(--blueLite);font-size:14px">\u2713</span>':'')+'</div><div class="l">'+p.l+'</div><div class="v">+'+p.v+'%</div></button>';}).join("");
+    const penChips=PENS.map(p=>'<button class="chip pen" data-act="pen" data-id="'+p.id+'"><div class="e">'+p.e+'</div><div class="l">'+p.l+'</div><div class="v">\u221210%</div></button>').join("")+'<button class="add" data-act="customtoggle">\uff0b Custom</button>';
+    const customBlock = customOpen ? ('<div class="row" style="gap:8px;margin-top:8px"><input id="cLabel" class="inp" placeholder="What did you do?"><input id="cValue" class="inp" style="width:64px;flex:0 0 auto;text-align:center" inputmode="numeric" placeholder="\u00b1%"><button class="cta" data-act="customadd" style="width:auto;padding:0 16px;background:var(--blue);box-shadow:none;margin-top:0">Add</button></div>') : "";
+    const proofBlock = sc.published ? ('<div class="panel"><div style="font-size:13px;color:var(--muted);font-weight:600;margin-bottom:10px">PROOF \u2014 YOUR FINAL SCORE</div>'+
+      (proof
+        ? '<div class="row" style="gap:12px"><img src="'+proof+'" alt="proof" style="width:84px;height:84px;object-fit:cover;border-radius:14px;border:2px solid var(--flame)"><div style="flex:1"><div style="font-size:16px;font-weight:700">Done & verified \u2713</div><div style="font-size:14px;color:var(--blueLite);font-weight:700">Final score: '+sc.score+'%</div><button class="link" data-act="reproof" style="color:var(--muted);margin-top:4px">Retake photo</button></div></div>'
+        : '<button class="cta" data-act="proof" style="background:transparent;border:1px dashed var(--line);color:var(--text);box-shadow:none;font-weight:600">\ud83d\udcf8  Add your smiling \u201cI\u2019m done\u201d selfie</button>')+'</div>') : "";
+    controls='<button class="cta" data-act="upload">'+(sc.published?'\u25b6  Upload another video (+100%)':'\u25b6  Press Upload  (complete video)')+'</button>'+
+      proofBlock+
+      '<div class="sec">LOG A STEP (towards upload)</div><div class="scroll">'+presetChips+'</div>'+
+      '<div class="sec">DISTRACTIONS (cost you 10%)</div><div class="scroll">'+penChips+'</div>'+customBlock;
+  } else {
+    controls='<button class="ghost" data-act="today">\u2190  Back to today</button>';
+    if(sc.published&&proof){ controls+='<div class="panel"><div style="font-size:13px;color:var(--muted);font-weight:600;margin-bottom:10px">PROOF</div><div class="row" style="gap:12px"><img src="'+proof+'" alt="proof" style="width:84px;height:84px;object-fit:cover;border-radius:14px;border:2px solid var(--flame)"><div style="flex:1"><div style="font-size:16px;font-weight:700">Done & verified \u2713</div><div style="font-size:14px;color:var(--blueLite);font-weight:700">Final score: '+sc.score+'%</div></div></div></div>'; }
+  }
+
+  const logRows=steps.map((s,i)=>{const up=s.presetId==="upload",neg=s.v<0;
+    return '<div class="logrow"><span style="font-size:16px">'+s.e+'</span><div style="flex:1;min-width:0"><div style="font-size:14px">'+esc(s.l)+'</div><div style="font-size:11.5px;color:var(--muted);margin-top:1px">'+stamp(s.ts)+'</div></div><span style="font-size:13px;font-weight:700;width:50px;text-align:right;color:'+(up?'var(--flame)':neg?'var(--red)':'var(--blueLite)')+'">'+(up?'+100%':((neg?'':'+')+s.v+'%'))+'</span>'+(isToday?'<button class="x" data-act="del" data-i="'+i+'" aria-label="Remove">\u00d7</button>':'')+'</div>';}).join("");
+  const logBlock = steps.length ? ('<div style="margin-top:18px"><div class="row" style="justify-content:space-between"><span style="font-size:13px;color:var(--muted);font-weight:600">'+(isToday?'TODAY\u2019S CHECK-INS':'CHECK-INS \u00b7 '+shortDM(parseDay(dispKey)))+'</span>'+(isToday?'<button class="link" data-act="resetday" style="color:var(--muted)">Reset day</button>':'')+'</div><div class="log">'+logRows+'</div>'+(isToday?'<div style="font-size:12px;color:var(--muted);margin-top:6px">Tap \u00d7 on any row to remove a mistaken check-in.</div>':'')+'</div>') : "";
+
+  var _last=state.meta&&state.meta.lastExport, _ds=_last?Math.floor((Date.now()-_last)/86400000):null;
+  var backupNudge=(_last&&_ds<7)?'':'<div style="font-size:13px;color:var(--flame);font-weight:600;margin-bottom:10px">\u26a0\ufe0f '+(_last?('Last backup '+_ds+' day'+(_ds===1?'':'s')+' ago'):'You haven\u2019t backed up yet')+' \u2014 export to stay safe.</div>';
+  var backupSection='<div class="sec">DATA & BACKUP</div><div class="panel">'+backupNudge+'<div class="row" style="gap:10px"><button class="ghost" data-act="export" style="margin-top:0;flex:1">\u2b07\ufe0f Export backup</button><button class="ghost" data-act="import" style="margin-top:0;flex:1">\u2b06\ufe0f Import backup</button></div><div id="storageInfo" style="font-size:12px;color:var(--muted);margin-top:10px"></div></div>';
+  document.getElementById("root").innerHTML =
+  '<div class="row" style="justify-content:space-between;padding:18px 2px 10px">'+
+    '<div><div style="font-weight:700;font-size:17px">Upload<span style="color:var(--blue)"> Studio</span></div><div style="font-size:11px;color:var(--muted);margin-top:2px">Saved on this phone</div></div>'+
+    '<div class="row" style="gap:6px"><svg width="22" height="22" viewBox="0 0 24 24"><path d="'+flamePath+'" fill="'+(streak>0?'var(--flame)':'var(--flameDim)')+'"/></svg><span style="font-weight:700;font-size:20px;color:'+(streak>0?'var(--text)':'var(--muted)')+'">'+streak+'</span></div></div>'+
+  '<div style="height:1px;background:var(--line)"></div>'+
+  (isToday?'':'<div style="text-align:center;font-size:12px;color:var(--blueLite);margin-top:10px;font-weight:600">VIEWING A PAST DAY</div>')+
+  '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:'+(isToday?'20px':'12px')+' 0 4px;text-align:center"><div><div class="stat-l">Check-ins</div><div class="stat-v">'+steps.length+'</div></div><div><div class="stat-l">Active Time</div><div class="stat-v"><span id="activeT">'+aH+'h '+aM+'m</span></div></div><div><div class="stat-l">Progress</div><div class="stat-v">'+sc.score+'%</div></div></div>'+
+  '<div style="position:relative;margin-top:8px"><svg viewBox="0 0 300 300" style="width:100%;display:block"><defs><linearGradient id="prog" x1="0" y1="1" x2="1" y2="0"><stop offset="0%" stop-color="var(--blue)"/><stop offset="100%" stop-color="var(--blueLite)"/></linearGradient></defs>'+ticks+
+    '<path d="'+arc(133,S0,S0+SW)+'" fill="none" stroke="var(--tickDim)" stroke-width="7" stroke-linecap="round"/>'+
+    (sc.score>0?'<path d="'+arc(133,S0,progEnd)+'" fill="none" stroke="url(#prog)" stroke-width="7" stroke-linecap="round"/>':'')+
+    '<g transform="translate(150,16)"><path transform="translate(-9,-9) scale(0.75)" d="'+flamePath+'" fill="'+(sc.published?'var(--flame)':'var(--flameDim)')+'"/></g></svg>'+
+    '<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 36px"><div style="color:var(--muted);font-size:15px;margin-bottom:2px">\ud83d\udcc5 '+fmtDate(parseDay(dispKey))+'</div><div style="position:relative;display:flex;align-items:baseline;justify-content:center"><span style="font-size:62px;font-weight:800;line-height:1">'+sc.score+'</span><span style="font-size:24px;font-weight:700;color:var(--blueLite);margin-left:2px">%</span>'+
+      (sc.videos>1?'<span style="position:absolute;top:-6px;right:-34px;background:var(--flame);color:#fff;font-size:12px;font-weight:800;padding:2px 7px;border-radius:9px">\u00d7'+sc.videos+'</span>':'')+
+      (burst?'<span style="position:absolute;inset:-20px;border-radius:50%;border:3px solid var(--flame);animation:ring .9s ease-out forwards"></span>':'')+
+    '</div><div style="margin-top:12px;font-size:17px;font-weight:600;color:'+(sc.published?'var(--flame)':'var(--text)')+'">'+statusTop+'</div><div style="margin-top:2px;font-size:14px;color:var(--muted)">'+statusSub+'</div></div></div>'+
+  controls+ logBlock+
+  '<div class="sec" style="margin-top:22px;display:flex;align-items:center;justify-content:space-between"><button class="link" data-act="prevweek">\u2039 Earlier</button><span style="color:var(--text)">'+rangeLbl+'</span><button class="link" data-act="nextweek" '+(weekOffset>=0?'disabled':'')+'>Later \u203a</button></div>'+
+  '<svg viewBox="0 0 '+W+' '+(H+22)+'" style="width:100%;margin-top:6px"><line x1="'+pad+'" y1="'+goalY+'" x2="'+(W-pad)+'" y2="'+goalY+'" stroke="var(--blueLite)" stroke-width="1.4" stroke-dasharray="2 5" opacity="0.7"/><path d="'+smooth(pts)+'" fill="none" stroke="var(--blue)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>'+dots+'</svg>'+
+  '<div style="text-align:center;color:var(--muted);font-size:12px;margin-top:8px">Tap any dot to view that day. Selected day is ringed.</div>'+
+  backupSection;
+  burst=false; updateStorageInfo();
+}
+
+function mutate(fn){ fn(); save(); render(); }
+document.getElementById("root").addEventListener("click",e=>{
+  const b=e.target.closest("[data-act]"); if(!b) return;
+  const act=b.dataset.act, tKey=dkey(new Date());
+  if(act==="day"){ selectedDay=(b.dataset.day===tKey)?null:b.dataset.day; render(); return; }
+  if(act==="today"){ selectedDay=null; weekOffset=0; render(); return; }
+  if(act==="prevweek"){ weekOffset--; render(); return; }
+  if(act==="nextweek"){ if(weekOffset<0) weekOffset++; render(); return; }
+  if(act==="export"){ exportBackup(); return; }
+  if(act==="import"){ document.getElementById("importInput").click(); return; }
+  const en=entry(tKey);
+  if(act==="preset"){ const p=PRESETS.find(x=>x.id===b.dataset.id);
+    if(en.steps.some(s=>s.presetId===p.id)) return;
+    mutate(()=>en.steps.push({presetId:p.id,l:p.l,e:p.e,v:p.v,ts:Date.now()})); }
+  else if(act==="pen"){ const p=PENS.find(x=>x.id===b.dataset.id);
+    mutate(()=>en.steps.push({presetId:null,l:p.l,e:p.e,v:p.v,ts:Date.now()})); }
+  else if(act==="upload"){ burst=true; mutate(()=>en.steps.push({presetId:"upload",l:"Uploaded video",e:"\u25b6\ufe0f",v:0,ts:Date.now()})); }
+  else if(act==="del"){ const i=+b.dataset.i; mutate(()=>en.steps.splice(i,1)); }
+  else if(act==="resetday"){ mutate(()=>{ en.steps=[]; delete state.proofs[tKey]; }); }
+  else if(act==="customtoggle"){ customOpen=!customOpen; render(); }
+  else if(act==="customadd"){ const L=document.getElementById("cLabel").value.trim();
+    const V=parseInt(document.getElementById("cValue").value,10);
+    if(!L||isNaN(V)) return; customOpen=false;
+    mutate(()=>en.steps.push({presetId:null,l:L,e:V<0?"\ud83d\udeab":"\u2022",v:V,ts:Date.now()})); }
+  else if(act==="proof"||act==="reproof"){ document.getElementById("proofInput").click(); }
+});
+document.getElementById("proofInput").addEventListener("change",async e=>{
+  const f=e.target.files&&e.target.files[0]; if(!f) return;
+  const tKey=dkey(new Date());
+  try{ const url=await readProof(f); state.proofs[tKey]=url; save(); render(); }
+  catch(_){ alert("Couldn\u2019t read that image."); }
+  e.target.value="";
+});
+document.getElementById("importInput").addEventListener("change",function(e){
+  var f=e.target.files&&e.target.files[0]; if(!f) return;
+  var rd=new FileReader();
+  rd.onload=function(){ try{ var p=JSON.parse(rd.result), inc=(p&&p.state)?p.state:p;
+    if(!inc||typeof inc!=="object"||!inc.history){ alert("That file doesn\u2019t look like an Upload Studio backup."); return; }
+    if(!confirm("Import this backup? Imported days merge in and win on conflicts.")) return;
+    try{ localStorage.setItem(CACHE+":preimport",JSON.stringify(state)); }catch(_){}
+    state.history=state.history||{}; state.proofs=state.proofs||{};
+    for(var k in inc.history) state.history[k]=inc.history[k];
+    if(inc.proofs){ for(var k2 in inc.proofs) state.proofs[k2]=inc.proofs[k2]; }
+    if(inc.meta&&inc.meta.lastExport){ state.meta=state.meta||{}; state.meta.lastExport=inc.meta.lastExport; }
+    save(); render(); alert("Backup imported \u2713");
+  }catch(err){ alert("Couldn\u2019t read that backup file."); } };
+  rd.readAsText(f); e.target.value=""; });
+setInterval(()=>{ if(selectedDay) return; const el=document.getElementById("activeT"); if(!el) return;
+  const en=state.history[dkey(new Date())]; if(!en||!en.steps.length) return;
+  const ms=Date.now()-Math.min.apply(null,en.steps.map(s=>s.ts));
+  el.textContent=Math.floor(ms/3600000)+"h "+Math.floor(ms%3600000/60000)+"m"; },20000);
+
+load(); render();
+</script>
+</body>
+</html>
